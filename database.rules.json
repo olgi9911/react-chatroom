@@ -1,0 +1,18 @@
+{
+    "rules": {
+        "userData": {
+          	".write": "auth.uid != null",
+          	".read": "auth.uid != null"  
+        },
+      	"room": {
+            "Public room": {
+                ".write": "auth.uid != null",
+                ".read": "auth.uid != null"
+            },
+            "$name": {
+                ".write": "root.child('userData/'+auth.uid+'/room/'+$name).exists()",
+                ".read": "root.child('userData/'+auth.uid+'/room/'+$name).exists()"
+            }
+        }
+    }
+}
